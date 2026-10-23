@@ -121,6 +121,14 @@
     .s-dot { fill: var(--lime); stroke: var(--ink); stroke-width: 2.5; }
     .s-ring { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-dasharray: 3 3; }
 
+
+    /* polish: aligned inputs, chart label halo, next-step link */
+    .inputs, .adv { align-items: end; }
+    #chart .cap { paint-order: stroke; stroke: var(--paper-raised); stroke-width: 4px; stroke-linejoin: round; }
+    .next-step { border: 1px solid var(--rule); border-left: 4px solid var(--ink); background: var(--paper-raised); padding: 14px 16px; margin: 24px 0 0; }
+    .next-step .k { color: var(--ink-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+    .next-step a { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; text-transform: lowercase; }
+    .next-step p { margin: 4px 0 0; color: var(--ink-muted); font-size: 0.92rem; }
   </style>
 </head>
 <body>
@@ -134,19 +142,19 @@
     <section class="panel">
       <div class="inputs">
         <label class="field">Spend pattern
-          <select id="pat"><option value="pulse">One burst</option><option value="steady" selected>Steady</option><option value="flights">Flights (4 on, 4 off)</option></select></label>
+          <select autocomplete="off" id="pat"><option value="pulse">One burst</option><option value="steady" selected>Steady</option><option value="flights">Flights (4 on, 4 off)</option></select></label>
         <label class="field">Weekly spend when on <span class="suffix">$</span>
-          <input type="number" id="amt" min="1" step="100" inputmode="numeric"></label>
+          <input autocomplete="off" type="number" id="amt" min="1" step="100" inputmode="numeric"></label>
         <label class="field">Max weekly lift at full saturation <span class="suffix">units</span>
-          <input type="number" id="mx" min="1" step="50" inputmode="numeric"></label>
+          <input autocomplete="off" type="number" id="mx" min="1" step="50" inputmode="numeric"></label>
       </div>
       <div class="inputs" style="margin-top:14px">
         <label class="field">Carryover: share of last week's effect that stays <span class="out" id="o-dec"></span>
-          <input type="range" id="dec" min="0" max="95" step="1"></label>
+          <input autocomplete="off" type="range" id="dec" min="0" max="95" step="1"></label>
         <label class="field">Half-saturation: adstock where effect reaches half of max <span class="out" id="o-k"></span>
-          <input type="range" id="k" min="500" max="20000" step="100"></label>
+          <input autocomplete="off" type="range" id="k" min="500" max="20000" step="100"></label>
         <label class="field">Steepness of the curve <span class="out" id="o-a"></span>
-          <input type="range" id="a" min="1" max="4" step="0.5"></label>
+          <input autocomplete="off" type="range" id="a" min="1" max="4" step="0.5"></label>
       </div>
       <p class="hint">Carryover is the geometric adstock rate. Half-saturation and steepness shape a Hill curve. These are modelling choices, not facts about your business. Slide them and watch what changes.</p>
       <div id="err" role="alert"></div>
